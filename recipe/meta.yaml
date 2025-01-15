@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/PyKMIP-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/PyKMIP-{{ version }}.tar.gz
   sha256: bb6ff310bba8b1130ffe675347f668f7234d022ba3d51edea5ea7e2ea9523897
 
 build:
@@ -14,16 +14,16 @@ build:
     - pykmip-server = kmip.services.server.server:main
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
     - pip
-    - python >=3.7
+    - python {{ python_min }}
   run:
     - cryptography
     - enum-compat
-    - python >=3.7
+    - python >={{ python_min }}
     - requests
     - six
     - sqlalchemy
@@ -36,6 +36,7 @@ test:
     - pykmip-server --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/OpenKMIP/PyKMIP
