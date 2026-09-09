@@ -2,18 +2,18 @@ schema_version: 1
 
 context:
   name: pykmip
-  version: "0.10.0"
+  version: "0.11.0"
 
 package:
   name: ${{ name|lower }}
   version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/PyKMIP-${{ version }}.tar.gz
-  sha256: bb6ff310bba8b1130ffe675347f668f7234d022ba3d51edea5ea7e2ea9523897
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
+  sha256: eb42e2d9674e470935d98474b8502e675894cc8489362d8419fdd957319f2b3e
 
 build:
-  number: 2
+  number: 0
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv
   python:
